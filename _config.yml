@@ -15,4 +15,7 @@ plainwhite:
   social_links:
     twitter: imranh2
     github: imranh2
-    #linkedIn: 
+    #linkedIn:
+  navigation:
+    - title: About
+      url: "/about"
