@@ -1,0 +1,13 @@
+# Site settings
+title: Imran's Website
+description: >-
+  Full(-ish) of thoughts, musings, 'stuff'.
+baseurl: "/"
+url: "https://imranh.co.uk"
+show_excerpts: true
+twitter_username: imranh2
+github_username:  imranh2
+
+# Build settings
+markdown: kramdown
+theme: minima
