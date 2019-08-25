@@ -1,13 +1,18 @@
 # Site settings
-title: Imran's Website
-description: >-
-  Full(-ish) of thoughts, musings, 'stuff'.
 baseurl: "/"
 url: "https://imranh.co.uk"
+
+title: Imran's Website
 show_excerpts: true
-twitter_username: imranh2
-github_username:  imranh2
 
 # Build settings
 markdown: kramdown
-theme: minima
+remote_theme: imranh2/plainwhite-jekyll
+
+plainwhite:
+  name: Imran Hussain
+  tagline: Random Musings...
+  social_links:
+    twitter: imranh2
+    github: imranh2
+    #linkedIn: 
