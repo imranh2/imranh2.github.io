@@ -9,6 +9,11 @@ show_excerpts: true
 markdown: kramdown
 remote_theme: imranh2/plainwhite-jekyll
 
+# Plugins
+plugins:
+  - jekyll-sitemap
+
+
 plainwhite:
   name: Imran Hussain
   tagline: Random Musings...
