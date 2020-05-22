@@ -4,6 +4,8 @@ title: "Adventures with On-prem Kubernetes (Kubespray) with Ingress (NGINX Ingre
 date: 2020-05-21 14:45
 ---
 
+Setting up a on-prem Kubernetes cluster with all the bells and whistles
+
 # Preface
 
 I honestly wish I'd found [this blog](https://medium.com/@futuredon/kubernetes-on-prem-demo-using-gns3-kubespray-nginx-ingress-frr-and-metallb-part-1-4b872a6fa89e) 
