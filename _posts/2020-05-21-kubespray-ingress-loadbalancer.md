@@ -6,6 +6,8 @@ date: 2020-05-21 14:45
 
 Setting up a on-prem Kubernetes cluster with all the bells and whistles
 
+**Update 11/07/2020:** Include information about MetalLB changes
+
 # Preface
 
 I honestly wish I'd found [this blog](https://medium.com/@futuredon/kubernetes-on-prem-demo-using-gns3-kubespray-nginx-ingress-frr-and-metallb-part-1-4b872a6fa89e) 
@@ -63,25 +65,24 @@ ingress_nginx_host_network: false
 
 
 # MetalLB Config
-# See https://github.com/kubernetes-sigs/kubespray/blob/master/contrib/metallb
-metallb:
-  ip_range:
-    - "10.0.70.100-10.0.70.132" # Choose IP range MetalLB can give out on the L2 network segment
-  protocol: "layer2"
-  limits:
-    cpu: "100m"
-    memory: "100Mi"
-  port: "7472"
-  version: v0.7.3
+# See https://github.com/kubernetes-sigs/kubespray/tree/master/roles/kubernetes-apps/metallb
+metallb_enabled: true
+metallb_ip_range:
+  - "10.0.70.100-10.0.70.132" # Choose IP range MetalLB can give out on the L2 network segment
+metallb_protocol: "layer2"
 ```
 
 Once deployed you'll have a working Kubernetes cluster (hopefully).
 
 
-# Load Balancer via [MetalLB](https://github.com/kubernetes-sigs/kubespray/tree/master/contrib/metallb)
+# Load Balancer via [MetalLB](https://github.com/kubernetes-sigs/kubespray/tree/master/roles/kubernetes-apps/metallb)
 
-Super easy to deploy as you did the config in `group_vars/k8s-cluster/addons.yml`, just follow the [readme](https://github.com/kubernetes-sigs/kubespray/blob/master/contrib/metallb/metallb.yml) 
-in the kubespray docs.
+As of [29/06/2020](https://github.com/kubernetes-sigs/kubespray/commit/25bab0e9760bdad922863ac95bb2944fabe1c3a4) 
+MetalLB is a core part of Kubespray and therefore no longer requires any extra deployment steps. Kubespray 2.13 is the last version to require 
+any extra steps beyond setting the config options in `group_vars/k8s-cluster/addons.yml`.
+
+~~Super easy to deploy as you did the config in `group_vars/k8s-cluster/addons.yml`, just follow the [readme](https://github.com/kubernetes-sigs/kubespray/tree/8213b1802b3971722514e96ead1333572a529d50/contrib/metallb) 
+in the kubespray docs.~~ 
 
 
 # Ingress via [NGINX Ingress](https://github.com/kubernetes-sigs/kubespray/tree/master/roles/kubernetes-apps/ingress_controller/ingress_nginx)
