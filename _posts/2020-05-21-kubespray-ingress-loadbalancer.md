@@ -2,6 +2,7 @@
 layout: post
 title: "Adventures with On-prem Kubernetes (Kubespray) with Ingress (ingress-nginx) and a Load Balancer (MetalLB)"
 date: 2020-05-21 14:45
+last_modified_at: 2022-03-29 18:23
 ---
 
 Setting up a on-prem Kubernetes cluster with all the bells and whistles

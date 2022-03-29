@@ -2,6 +2,7 @@
 layout: post
 title: "My quick and dirty notes on building deb backports"
 date: 2021-01-26 19:45
+last_modified_at: 2022-03-29 18:24
 ---
 
 1. Grab the sources
