@@ -1,10 +1,15 @@
 ---
 layout: post
-title: "Adventures with On-prem Kubernetes (Kubespray) with Ingress (NGINX Ingress) and a Load Balancer (MetalLB)"
+title: "Adventures with On-prem Kubernetes (Kubespray) with Ingress (ingress-nginx) and a Load Balancer (MetalLB)"
 date: 2020-05-21 14:45
 ---
 
 Setting up a on-prem Kubernetes cluster with all the bells and whistles
+
+**Update 29/03/2022:** I'd mistakenly called `"ingress-nginx"` `"NGINX Ingress"`, 
+the 2 are different products not to be confused.
+
+`ingress-nginx` is made by Google and is FOSS while `NGINX Ingress` is made by F5 and is commercial.
 
 **Update 11/07/2020:** Include information about MetalLB changes
 
@@ -36,7 +41,7 @@ etcd_kubeadm_enabled: true # Decided to enable this new experimental feature
 
 # Don't rely on a external loadbalancer
 # Install one on every worker node
-# I'm sure this could be replaced down the line with MetalLB and NGINX Ingress...
+# I'm sure this could be replaced down the line with MetalLB and ingress-nginx...
 loadbalancer_apiserver_localhost: true
 loadbalancer_apiserver_type: nginx
 
@@ -58,7 +63,7 @@ kubeadm_control_plane: true # Decided to enable this new experimental feature
 `group_vars/k8s-cluster/addons.yml`
 
 ```
-# Enable the deployment of NGINX Ingress
+# Enable the deployment of ingress-nginx
 # But don't enable the HostNetwork stuff as we'll be using MetalLB as LoadBalancer
 ingress_nginx_enabled: true
 ingress_nginx_host_network: false
@@ -85,7 +90,7 @@ any extra steps beyond setting the config options in `group_vars/k8s-cluster/add
 in the kubespray docs.~~ 
 
 
-# Ingress via [NGINX Ingress](https://github.com/kubernetes-sigs/kubespray/tree/master/roles/kubernetes-apps/ingress_controller/ingress_nginx)
+# Ingress via [ingress-nginx](https://github.com/kubernetes-sigs/kubespray/tree/master/roles/kubernetes-apps/ingress_controller/ingress_nginx)
 
 This one is mostly already done via kubespray apart from the 
 service of `type: LoadBalancer`.
@@ -97,7 +102,7 @@ instead of `LoadBalancer` which we just setup via MetalLB.
 We also have to modify the `selector` to match what kubespray has 
 deployed.
 
-Create and deploy a file called `nginx-ingress-service.yaml` with 
+Create and deploy a file called `ingress-nginx-service.yaml` with 
 the contents:
 
 ```
