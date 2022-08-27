@@ -2,7 +2,7 @@
 layout: post
 title: "Adventures with On-prem Kubernetes (Kubespray) with Ingress (ingress-nginx) and a Load Balancer (MetalLB)"
 date: 2020-05-21 14:45
-last_modified_at: 2022-03-29 18:23
+last_modified_at: 2022-08-27 11:43
 ---
 
 Setting up a on-prem Kubernetes cluster with all the bells and whistles
@@ -35,7 +35,7 @@ I'll list **some** of the changes I made along the way
 
 `group_vars/all/all.yml`
 
-```
+```yaml
 kubeconfig_localhost: true # Saves the kubectl conf file to artifacts/admin.conf
 
 etcd_kubeadm_enabled: true # Decided to enable this new experimental feature
@@ -52,7 +52,7 @@ cert_management: script # Generate certs for us
 
 `group_vars/k8s-cluster/k8s-cluster.yml`
 
-```
+```yaml
 kube_proxy_strict_arp: true #Needed for MetalLB
 
 dns_min_replicas: 3 #I had three masters so went with one dns replica for master
@@ -63,7 +63,7 @@ kubeadm_control_plane: true # Decided to enable this new experimental feature
 
 `group_vars/k8s-cluster/addons.yml`
 
-```
+```yaml
 # Enable the deployment of ingress-nginx
 # But don't enable the HostNetwork stuff as we'll be using MetalLB as LoadBalancer
 ingress_nginx_enabled: true
@@ -106,7 +106,7 @@ deployed.
 Create and deploy a file called `ingress-nginx-service.yaml` with 
 the contents:
 
-```
+```yaml
 # Source: ingress-nginx/templates/controller-service-webhook.yaml
 apiVersion: v1
 kind: Service
@@ -171,7 +171,7 @@ We'll make a deployment, a service using `ClusterIP` using port
 
 `hello-world-d_s_i.yaml`
 
-```
+```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:

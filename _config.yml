@@ -3,11 +3,15 @@ baseurl: "/"
 url: "https://imranh.co.uk"
 
 title: Imran's Website
+description: >
+  Hello World! Welcome to my website where you'll largely find nothing of 
+  interest :)
 show_excerpts: true
 
 # Build settings
 markdown: kramdown
 remote_theme: imranh2/plainwhite-jekyll
+#remote_theme: samarsault/plainwhite-jekyll
 
 # Plugins
 plugins:
@@ -15,7 +19,10 @@ plugins:
 
 
 plainwhite:
+  html_lang: "en-GB"
+  #dark_mode: true
   name: Imran Hussain
+  portfolio_image:  "assets/portfolio.png"
   tagline: Random Musings...
   social_links:
     twitter: imranh2
@@ -24,3 +31,4 @@ plainwhite:
   navigation:
     - title: About
       url: "/about"
+  #sitemap: true
