@@ -14,7 +14,7 @@ We won't go over [installing WSL](https://learn.microsoft.com/en-us/windows/wsl/
 Lets say we want debian bookworm
 
 0. `export CONTAINER='debian:bookworm'`
-1. `podman pull $CONTAINER`
+1. `podman run -t $CONTAINER bash ls`
 2. `export CONTAINER_ID=$(podman container ls -a | grep -i $CONTAINER | awk '{print$1}')`
 3. `podman export $CONTAINER_ID > /mnt/c/Users/$USER/$(echo $CONTAINER | sed s/:/-/).tar`
 
